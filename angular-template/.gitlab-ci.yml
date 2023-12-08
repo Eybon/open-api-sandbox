@@ -1,0 +1,47 @@
+include:
+  - project: "dep/library/ci-library"
+    ref: production
+    file: "stages/analysis-jobs/dependency-check.yml"
+  - project: "dep/library/ci-library"
+    ref: production
+    file: "stages/analysis-jobs/license-finder.yml"
+  - project: "dep/library/ci-library"
+    ref: production
+    file: "stages/analysis-jobs/gitleaks.yml"        
+  - project: "dep/library/ci-library"
+    ref: production
+    file: "configuration/before-script-templates.yml"
+
+variables:
+  # Name of the GitLab environment associated with each job, allowing the use of scoped variables
+  ENVIRONMENT_NAME: "${CI_COMMIT_REF_NAME}"
+  # Job non obligatoire
+  ALLOW_FAILURE_LICENSE_FINDER: "true"
+  ALLOW_FAILURE_DEPENDENCY_CHECK: "true"
+
+stages:
+  - 📦 build
+  - 🚀 deploiement
+  - ⏱ verification
+  
+
+# Build
+🚧 build-angular:
+  stage: 📦 build
+  script:
+    - echo OK
+
+# Deploiement
+🐋 Docker:
+  stage: 🚀 deploiement
+  script:
+    - echo OK
+
+# Verification
+dependency-check:
+  stage: ⏱ verification
+gitleaks:
+  stage: ⏱ verification
+license-finder:
+  stage: ⏱ verification
+

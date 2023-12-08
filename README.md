@@ -8,7 +8,7 @@ Projet sandbox pour test des outils de l'écosystème open-api
 |---------------------|---------|
 | Java                | 17      |
 | SpringBoot          | 2.7.8   |
-| Angular             |         |
+| Angular             | 15.1.4  |
 | OpenApi Generator   | 6.2.0   | 
 
 

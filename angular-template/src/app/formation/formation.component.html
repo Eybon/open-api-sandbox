@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>API/Ressource - Formation</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- API GET Formation -->
+    <h3>GET /formation</h3>
+    <div class="terminal">
+      <pre>{{resultAppelService}}</pre>
+      <pre>{{formation | json}}</pre>
+    </div>
+    <!-- API GET Formation/File  -->
+    <h3>GET /formation/file</h3>
+    <button mat-raised-button (click)="getFormationFile()">Télécharger Formation</button>
+  </mat-card-content>
+</mat-card>

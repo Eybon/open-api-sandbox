@@ -1,0 +1,16 @@
+<input type="hidden" #selection>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <mat-card class="card" (click)="selection.value = 'TECH'"><mat-card-content>TECH</mat-card-content></mat-card>
+  <mat-card class="card" (click)="selection.value = 'FORMATION'"><mat-card-content>Formation</mat-card-content></mat-card>
+</div>
+
+<div class="content" role="main">
+  <br />
+  <div [ngSwitch]="selection.value">
+    <pre *ngSwitchDefault><app-info-tech></app-info-tech></pre>
+    <pre *ngSwitchCase="'TECH'"><app-info-tech></app-info-tech></pre>
+    <pre *ngSwitchCase="'FORMATION'"><app-formation></app-formation></pre>
+  </div>
+</div>

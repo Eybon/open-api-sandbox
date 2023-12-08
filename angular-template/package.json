@@ -1,0 +1,46 @@
+{
+  "name": "angular-application-template",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "build": "npm run generate-api && ng build",
+    "start": "npm run build && ng serve",
+    "start:bouchon": "npm run build && ng serve --configuration=bouchon",
+    "start:production": "npm run build && ng serve --configuration=production",
+    "generate-api": "openapi-generator-cli generate -i ../_build/global.yml -g typescript-angular -o src/generated-openapi"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^15.1.4",
+    "@angular/cdk": "^15.1.4",
+    "@angular/common": "^15.1.4",
+    "@angular/compiler": "^15.1.4",
+    "@angular/core": "^15.1.4",
+    "@angular/forms": "^15.1.4",
+    "@angular/material": "^15.1.4",
+    "@angular/platform-browser": "^15.1.4",
+    "@angular/platform-browser-dynamic": "^15.1.4",
+    "@angular/router": "^15.1.4",
+    "file-saver": "^2.0.5",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.12.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^15.1.5",
+    "@angular/cli": "~15.1.5",
+    "@angular/compiler-cli": "^15.1.4",
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@types/file-saver": "^2.0.5",
+    "@types/jasmine": "~4.3.0",
+    "jasmine-core": "~4.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "typescript": "~4.8.2"
+  }
+}
