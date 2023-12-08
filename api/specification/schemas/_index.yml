@@ -1,0 +1,13 @@
+#
+# Fichier d'index de tout les schemas/objets
+#
+Erreur:
+  $ref: "../responses/erreur.yml"
+Formation:
+  $ref: "./formation.yml"
+Salle:
+  $ref: "./salle.yml"
+Adresse:
+  $ref: "./adresse.yml"
+Formateur:
+  $ref: "./formateur.yml"

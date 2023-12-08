@@ -1,0 +1,13 @@
+#
+# Description de la reponse en erreur
+#
+type: object
+title: erreur
+description: "Description d'une erreur standard"
+properties:
+  code_erreur:
+    type: string
+    description: Code technique/fonctionnel associé à une erreur. Un code différent est associé à chaque type d'erreur.
+  message_erreur:
+    type: string
+    description: Description de l'erreur.

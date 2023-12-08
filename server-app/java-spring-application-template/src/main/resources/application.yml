@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  tomcat:
+    accesslog:
+      enabled: true
+      # directory: ${PROJECT_PATH}/logs
+      directory: /tmp
+      pattern: '%h - %l %t "%r" %s %D'
+      prefix: access
+      suffix: .log
+      file-date-format: .yyyy-MM-dd
+      rotate: true
+
+spring:
+  jackson:
+    default-property-inclusion: non_null
+
+management:
+  health:
+    probes:
+      enabled: true
+
+openapi:
+  template:
+    base-path:
+
+externe:
+  scheduler:
+    enable: false
+    delay: 30000
+  endpoint:
+    formation:
+      url: https://microcks-microcks.apps.ocp4.innershift.sodigital.io/rest/Template+API/1.0.0/

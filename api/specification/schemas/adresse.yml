@@ -1,0 +1,21 @@
+#
+# Schema de l'objet Adresse
+#
+type: object
+title: adresse
+description: "Description d'une adresse postale"
+required:
+  - ville
+  - code_postal
+properties:
+  ville:
+    type: string
+    description: Nom de la ville associé à l'adresse
+  code_postal:
+    type: number
+    description: Code postal associé à l'adresse
+example:
+  {
+    "ville": "Nantes",
+    "code_postal": 44100
+  }

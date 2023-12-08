@@ -1,0 +1,30 @@
+#
+# Fichier OpenAPI Racine
+#
+openapi: 3.0.0
+info:
+  title: API Formation
+  description: Template d'API pour presentation OpenAPI
+  version: 1.0.0
+servers:
+  - url: localhost
+
+paths:
+  $ref: "./paths/_index.yml"
+components:
+  schemas:
+    $ref: "./schemas/_index.yml"
+  parameters:
+    $ref: "./parameters/_index.yml"
+  responses:
+    $ref: "./responses/_index.yml"
+
+tags:
+  - name: Formation
+    description: L'API formation permet d'interagir de consulter/modifier tout ce qui concerne les formations
+    externalDocs:
+      url: http://documentation/formation
+  - name: Formateur
+    description: L'API formateur permet d'interagir de consulter/modifier tout ce qui concerne les formateurs
+    externalDocs:
+      url: http://documentation/formateur

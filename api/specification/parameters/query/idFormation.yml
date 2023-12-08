@@ -1,0 +1,13 @@
+name: id_formation
+description: Id de la formation a recuperer. Le champs est obligatoire.
+in: query
+required: true
+schema:
+  type: integer
+examples:
+  exemple-formation-1:
+    value: 1
+  exemple-formation-2:
+    value: 2
+  exemple-formation-3:
+    value: 3

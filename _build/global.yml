@@ -1,0 +1,241 @@
+openapi: 3.0.0
+info:
+  title: API Formation
+  description: Template d'API pour presentation OpenAPI
+  version: 1.0.0
+  contact:
+    name: Stream API Dev Team
+    url: 'https://master-stream-api-doc-stream-api-doc.apps.ocp4.innershift.sodigital.io/chapter_one/'
+    email: antoine.forgerou@soprasteria.com
+servers:
+  - url: 'https://master-open-api-java-template-open-api-template.apps.ocp4.innershift.sodigital.io'
+paths:
+  /api/v1/formation:
+    get:
+      operationId: get_formation
+      summary: GET /formation
+      description: API de recuperation d'une formation via son ID
+      tags:
+        - Formation
+      parameters:
+        - $ref: '#/components/parameters/id_formation'
+      responses:
+        '200':
+          description: Traitement en succès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Formation'
+              examples:
+                formation-1:
+                  value:
+                    id: 1
+                    intitule: Formation Angular
+                    salle:
+                      nom: C206
+                      adresse:
+                        ville: Nantes
+                        code_postal: 44100
+                formation-2:
+                  value:
+                    id: 2
+                    intitule: Formation Spring
+                    salle:
+                      nom: Galion Nord 2B
+                      adresse:
+                        ville: Nantes
+                        code_postal: 44100
+                formation-3:
+                  value:
+                    id: 3
+                    intitule: Formation Spring - Online
+        '400':
+          $ref: '#/components/responses/Erreur'
+  /api/v1/formation/file:
+    get:
+      operationId: get_formation_file
+      summary: GET /formation/file
+      description: 'API de téléchargement d''un fichier de description de la formation, via son ID'
+      tags:
+        - Formation
+      parameters:
+        - $ref: '#/components/parameters/id_formation'
+      responses:
+        '200':
+          description: Fichier XML de description de la formation.
+          content:
+            multipart/form-data:
+              schema:
+                description: Fichier XML au format binaire
+                type: string
+                format: binary
+              examples:
+                exemple-fichier-xml:
+                  value: |
+                    <formation>
+                        <id>1</id>
+                        <description>test</description>
+                    </formation>
+        '400':
+          $ref: '#/components/responses/Erreur'
+  '/api/v1/formateur/{id_formateur}':
+    get:
+      operationId: get_formateur
+      summary: GET /formateur
+      description: API de recuperation d'un formateur via son ID
+      tags:
+        - Formateur
+      parameters:
+        - $ref: '#/components/parameters/id_formateur'
+      responses:
+        '200':
+          description: Traitement en succès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Formateur'
+              examples:
+                exemple-formateur-1:
+                  value:
+                    id: 1
+                    nom: Dumont
+                    prenom: Michel
+        '400':
+          $ref: '#/components/responses/Erreur'
+components:
+  schemas:
+    Erreur:
+      type: object
+      title: erreur
+      description: Description d'une erreur standard
+      properties:
+        code_erreur:
+          type: string
+          description: Code technique/fonctionnel associé à une erreur. Un code différent est associé à chaque type d'erreur.
+        message_erreur:
+          type: string
+          description: Description de l'erreur.
+    Formation:
+      type: object
+      title: formation
+      description: Description d'une formation
+      required:
+        - intitule
+      properties:
+        id:
+          type: integer
+          description: Id de la formation
+        intitule:
+          type: string
+          description: Intitulé de la formation
+        salle:
+          $ref: '#/components/schemas/Salle'
+      example:
+        id: 12
+        intitule: Formation Angular
+        salle:
+          nom: C206
+          adresse:
+            ville: Nantes
+            code_postal: 44100
+    Salle:
+      type: object
+      title: salle
+      description: Description d'une salle
+      required:
+        - nom
+      properties:
+        nom:
+          type: string
+          description: Numero de la salle
+        adresse:
+          $ref: '#/components/schemas/Adresse'
+      example:
+        nom: C206
+        adresse:
+          ville: Nantes
+          code_postal: 44100
+    Adresse:
+      type: object
+      title: adresse
+      description: Description d'une adresse postale
+      required:
+        - ville
+        - code_postal
+      properties:
+        ville:
+          type: string
+          description: Nom de la ville associé à l'adresse
+        code_postal:
+          type: number
+          description: Code postal associé à l'adresse
+      example:
+        ville: Nantes
+        code_postal: 44100
+    Formateur:
+      type: object
+      title: formateur
+      description: Description d'un formateur
+      required:
+        - nom
+        - prenom
+      properties:
+        id:
+          type: integer
+          description: Id du formateur
+        nom:
+          type: string
+          description: Nom du Formateur
+        prenom:
+          type: string
+          description: Prenom du Formateur
+      example:
+        id: 12
+        nom: Dupont
+        prenom: Robert
+  parameters:
+    id_formation:
+      name: id_formation
+      description: Id de la formation a recuperer. Le champs est obligatoire.
+      in: query
+      required: true
+      schema:
+        type: integer
+      examples:
+        exemple-formation-1:
+          value: 1
+        exemple-formation-2:
+          value: 2
+        exemple-formation-3:
+          value: 3
+    id_formateur:
+      name: id_formateur
+      description: Id du formateur Le champs est obligatoire.
+      in: path
+      required: true
+      schema:
+        type: integer
+      examples:
+        exemple-formateur-1:
+          value: 1
+  responses:
+    Erreur:
+      description: Erreur standard
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Erreur'
+          examples:
+            exemple-erreur-100:
+              value:
+                codeErreur: '100'
+                messageErreur: Le numéro de la formation n'a pas été fourni dans la requête.
+tags:
+  - name: Formation
+    description: L'API formation permet d'interagir de consulter/modifier tout ce qui concerne les formations
+    externalDocs:
+      url: 'http://documentation/formation'
+  - name: Formateur
+    description: L'API formateur permet d'interagir de consulter/modifier tout ce qui concerne les formateurs
+    externalDocs:
+      url: 'http://documentation/formateur'

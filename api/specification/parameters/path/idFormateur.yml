@@ -1,0 +1,9 @@
+name: id_formateur
+description: Id du formateur Le champs est obligatoire.
+in: path
+required: true
+schema:
+  type: integer
+examples:
+  exemple-formateur-1:
+    value: 1

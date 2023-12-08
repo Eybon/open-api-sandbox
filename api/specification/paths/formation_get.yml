@@ -1,0 +1,49 @@
+#
+# Description de l'api getFormation
+#
+operationId: get_formation
+summary: "GET /formation"
+description: "API de recuperation d'une formation via son ID"
+tags:
+  - Formation
+parameters:
+  - $ref: "../parameters/_index.yml#/id_formation"
+responses:
+  '200':
+    description: Traitement en succès.
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/_index.yml#/Formation"
+        examples:
+          formation-1:
+            value: {
+              "id": 1,
+              "intitule": "Formation Angular",
+              "salle": {
+                "nom": "C206",
+                "adresse": {
+                  "ville": "Nantes",
+                  "code_postal": 44100
+                }
+              }
+            }
+          formation-2:
+            value: {
+              "id": 2,
+              "intitule": "Formation Spring",
+              "salle": {
+                "nom": "Galion Nord 2B",
+                "adresse": {
+                  "ville": "Nantes",
+                  "code_postal": 44100
+                }
+              }
+            }
+          formation-3:
+            value: {
+              "id": 3,
+              "intitule": "Formation Spring - Online"
+            }
+  '400':
+    $ref: "../responses/_index.yml#/Erreur"

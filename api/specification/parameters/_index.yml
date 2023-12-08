@@ -1,0 +1,7 @@
+#
+# Fichier d'index de tous les paramètres
+#
+id_formation:
+  $ref: "./query/idFormation.yml"
+id_formateur:
+  $ref: "./path/idFormateur.yml"

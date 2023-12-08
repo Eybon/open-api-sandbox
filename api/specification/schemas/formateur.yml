@@ -1,0 +1,25 @@
+#
+# Schema de l'objet Formateur
+#
+type: object
+title: formateur
+description: "Description d'un formateur"
+required:
+  - nom
+  - prenom
+properties:
+  id:
+    type: integer
+    description: Id du formateur
+  nom:
+    type: string
+    description: Nom du Formateur
+  prenom:
+    type: string
+    description: Prenom du Formateur
+example:
+  {
+    "id": 12,
+    "nom": "Dupont",
+    "prenom": "Robert"
+  }

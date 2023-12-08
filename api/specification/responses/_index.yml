@@ -1,0 +1,15 @@
+#
+# Fichier d'index de toutes les responses
+#
+Erreur:
+  description: Erreur standard
+  content:
+    application/json:
+      schema:
+        $ref: "./erreur.yml"
+      examples:
+        exemple-erreur-100:
+          value: {
+            "codeErreur": "100",
+            "messageErreur": "Le numéro de la formation n'a pas été fourni dans la requête."
+          }

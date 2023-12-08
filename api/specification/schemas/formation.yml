@@ -1,0 +1,29 @@
+#
+# Schema de l'objet Formation
+#
+type: object
+title: formation
+description: "Description d'une formation"
+required:
+  - intitule
+properties:
+  id:
+    type: integer
+    description: Id de la formation
+  intitule:
+    type: string
+    description: Intitulé de la formation
+  salle:
+    $ref: "../schemas/_index.yml#/Salle"
+example:
+  {
+    "id": 12,
+    "intitule": "Formation Angular",
+    "salle": {
+      "nom": "C206",
+      "adresse": {
+        "ville": "Nantes",
+        "code_postal": 44100
+      }
+    }
+  }

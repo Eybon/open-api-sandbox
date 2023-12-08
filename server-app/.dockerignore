@@ -1,0 +1,3 @@
+*
+!target/*.jar
+!java-spring-application-template/target/*.jar

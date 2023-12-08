@@ -1,0 +1,28 @@
+#
+# Description de l'api getFormationFile
+#
+operationId: get_formation_file
+summary: "GET /formation/file"
+description: "API de téléchargement d'un fichier de description de la formation, via son ID"
+tags:
+  - Formation
+parameters:
+  - $ref: "../parameters/_index.yml#/id_formation"
+responses:
+  '200':
+    description: Fichier XML de description de la formation.
+    content:
+      multipart/form-data:
+        schema:
+          description: Fichier XML au format binaire
+          type: string
+          format: binary
+        examples:
+          exemple-fichier-xml:
+            value: |
+              <formation>
+                  <id>1</id>
+                  <description>test</description>
+              </formation>
+  '400':
+    $ref: "../responses/_index.yml#/Erreur"

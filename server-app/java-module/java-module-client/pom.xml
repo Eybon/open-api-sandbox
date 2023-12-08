@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>fr.forge.openapi</groupId>
+        <artifactId>open-api-java-module</artifactId>
+        <version>DEV-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>open-api-java-module-client</artifactId>
+    <version>DEV-SNAPSHOT</version>
+
+    <dependencies>
+        <!-- Dependance interne -->
+        <dependency>
+            <groupId>fr.forge.openapi</groupId>
+            <artifactId>open-api-java-generation-client</artifactId>
+        </dependency>
+
+        <!-- Dependance utilitaire -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

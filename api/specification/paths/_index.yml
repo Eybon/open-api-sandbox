@@ -1,0 +1,10 @@
+
+/api/v1/formation:
+  get:
+    $ref: "./formation_get.yml"
+/api/v1/formation/file:
+  get:
+    $ref: "./formation_get_file.yml"
+/api/v1/formateur/{id_formateur}:
+  get:
+    $ref: "./formateur_get.yml"

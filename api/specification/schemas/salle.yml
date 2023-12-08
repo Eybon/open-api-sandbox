@@ -1,0 +1,22 @@
+#
+# Schema de l'objet Salle
+#
+type: object
+title: salle
+description: "Description d'une salle"
+required:
+  - nom
+properties:
+  nom:
+    type: string
+    description: Numero de la salle
+  adresse:
+    $ref: "../schemas/_index.yml#/Adresse"
+example:
+  {
+    "nom": "C206",
+    "adresse": {
+      "ville": "Nantes",
+      "code_postal": 44100
+    }
+  }

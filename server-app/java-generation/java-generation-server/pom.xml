@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>fr.forge.openapi</groupId>
+        <artifactId>open-api-java-generation</artifactId>
+        <version>DEV-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>open-api-java-generation-server</artifactId>
+    <version>DEV-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${open-api-generator.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-all-server</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${open-api.filepath}</inputSpec>
+                            <!-- On valide les fichiers yaml -->
+                            <!--<skipValidateSpec>true</skipValidateSpec>-->
+                            <generatorName>spring</generatorName>
+                            <configOptions>
+                                <!-- config pour la generation de code -->
+                                <delegatePattern>true</delegatePattern>
+                                <dateLibrary>java8</dateLibrary>
+                                <!-- config output generation -->
+                                <sourceFolder>src/main/java</sourceFolder>
+                                <apiPackage>fr.forge.openapi.specification.server.api</apiPackage>
+                                <modelPackage>fr.forge.openapi.specification.server.model</modelPackage>
+                                <!-- config classeName for Controller/Service -->
+                                <useTags>true</useTags>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

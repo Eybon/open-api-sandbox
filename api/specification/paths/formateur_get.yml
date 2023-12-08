@@ -1,0 +1,26 @@
+#
+# Description de l'api getFormateur
+#
+operationId: get_formateur
+summary: "GET /formateur"
+description: "API de recuperation d'un formateur via son ID"
+tags:
+  - Formateur
+parameters:
+  - $ref: "../parameters/_index.yml#/id_formateur"
+responses:
+  '200':
+    description: Traitement en succès.
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/_index.yml#/Formateur"
+        examples:
+          exemple-formateur-1:
+            value: {
+              "id": 1,
+              "nom": "Dumont",
+              "prenom": "Michel"
+            }
+  '400':
+    $ref: "../responses/_index.yml#/Erreur"
