@@ -1,0 +1,40 @@
+.microcks-test:
+  script:
+    - bash ./jobs/script/microcks-test.sh
+
+.microcks-import:
+  script:
+    - bash ./jobs/script/microcks-import.sh    
+
+microcks-test:
+  image:
+    name: open-api-sandbox/microcks-cli:nightly
+    entrypoint: [""]
+  stage: ✅ tests
+  script:
+    - !reference [.microcks-test, script]
+  allow_failure: true
+  variables:
+    CI_DEBUG_TRACE: "true"
+    MICROCKS_TEST_API_NAME: "API Formation:1.0.0"
+    MICROCKS_TEST_API_ENDPOINT: "{{ URL_ENDPOINT_TEST }}"
+    MICROCKS_API: "{{ URL_MICROCKS }}/api"
+    MICROCKS_KEYCLOAK_CLIENT_ID: ""
+    MICROCKS_KEYCLOAK_CLIENT_SECRET: ""
+    MICROCKS_ADDITIONAL_PARAM: "--verbose --insecure"
+    
+microcks-import:
+  image:
+    name: open-api-sandbox/microcks-cli:nightly
+    entrypoint: [""]
+  stage: 🚀 deploiement
+  script:
+    - !reference [.microcks-import, script]
+  allow_failure: true
+  variables:
+    CI_DEBUG_TRACE: "true"
+    MICROCKS_IMPORT_API_FILE: "_build/global.yml:true"
+    MICROCKS_API: "{{ URL_MICROCKS }}/api"
+    MICROCKS_KEYCLOAK_CLIENT_ID: ""
+    MICROCKS_KEYCLOAK_CLIENT_SECRET: ""
+    MICROCKS_ADDITIONAL_PARAM: "--verbose --insecure"

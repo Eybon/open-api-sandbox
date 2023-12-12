@@ -76,7 +76,7 @@ Un job gitlab-ci est disponible dans le repo : [openapi-linter.yml](/api-tools/o
 * Ce job n'est pas bloquant mais remontera un warning si il détecte des problèmes sur vos fichiers OpenAPI
 
 Pour l'inclure dans un pipeline gitlab-ci:
-```
+```yaml
 include:
   - "/jobs/openapi-linter.yml"
 ```
