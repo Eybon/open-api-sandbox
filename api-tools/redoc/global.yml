@@ -3,8 +3,7 @@ info:
   title: API Formation
   description: Template d'API pour presentation OpenAPI
   version: 1.0.0
-servers:
-  - url: localhost
+
 paths:
   /api/v1/formation:
     get:

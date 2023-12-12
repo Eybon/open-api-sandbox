@@ -1,0 +1,7 @@
+# Configuration spectral par defaut
+extends: "spectral:oas"
+
+# Utilisation de la configuration spectral de IBM
+#extends: '@ibm-cloud/openapi-ruleset'
+#rules:
+#  ibm-error-response-schemas: off

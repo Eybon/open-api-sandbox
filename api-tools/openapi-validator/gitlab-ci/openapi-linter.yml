@@ -1,0 +1,22 @@
+.openapi-linter:
+  script:
+    - lint-openapi _build/global.yml > RESULT.txt
+    - cat RESULT.txt
+    - if grep -q 'warnings' RESULT.txt;
+      then 
+        echo 'Found warning';
+        exit 1;
+      else 
+        echo 'No warning found';
+      fi
+
+openapi-linter:
+  image: 
+    name: open-api-sandbox/openapi-linter
+    entrypoint: [""]
+  stage: 🌵 linter
+  script:
+    - !reference [.openapi-linter, script]
+  allow_failure: true
+  variables:
+    CI_DEBUG_TRACE: "true"
