@@ -34,6 +34,28 @@ sudo docker run -v /mnt/d/Projets/sandbox/open-api-sandbox:/data swagger-cli \
 
 
 
+## :black_joker: Prism (mock)
+
+Il est possible de lancer un serveur de mock directement en ligne de commande à partir de vos fichiers OpenAPI via l'outil Prism.
+
+Par defaut le serveur de mock est dispo ici : http://127.0.0.1:4010/
+
+```shell
+# Installation outil prism via npm
+npm install -g @stoplight/prism-cli
+
+# Lancement du serveur de mock
+prism mock _build/global.yml
+
+# Lancement du serveur de mock (en mode dynamics)
+prism mock _build/global.yml -d
+```
+
+Exemple de resultat suite au démarrage et à l'utilisation du serveur de mock :
+![Exemple](/tools/readme/images/mock_exemple.png "Exemple de lancement Prism")
+
+
+
 ## :vertical_traffic_light: openapi-validator (linter)
 
 Il est possible de faire tourner un linter sur les fichiers OpenAPI en utilisant l'outil openapi-validator (IBM).

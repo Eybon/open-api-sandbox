@@ -1,5 +1,8 @@
 # open-api-sandbox
+
 Projet sandbox pour test des outils de l'écosystème open-api
+
+L'objectif du repo est de tester et de proposer un template d'utilisation des outils autours de l'ecosysteme OpenAPI.
 
 
 ## :gear: Stack technique 
@@ -23,3 +26,4 @@ npm install -g swagger-cli
 # Construction du fichier global.yml
 swagger-cli bundle api/specification/index.yml --outfile _build/global.yml --type yaml
 ```
+
