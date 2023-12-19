@@ -1,0 +1,143 @@
+openapi: 3.0.3
+info:
+  title: Template API
+  description: Template d'API pour presentation OpenAPI
+  version: 1.0.0
+servers:
+  - url: 'http://dev.forge.test'
+paths:
+  /api/v1/formation:
+    get:
+      operationId: get_formation
+      summary: GET /formation
+      description: API de recuperation d'une formation via son ID
+      servers:
+        - url: 'http://dev.forge.test/api/formation'
+      tags:
+        - Formation
+      parameters:
+        - $ref: '#/components/parameters/id_formation'
+      responses:
+        '200':
+          description: Traitement en succès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Formation'
+              examples:
+                exemple:
+                  value:
+                    intitule: Intitule de la Formation
+        '400':
+          $ref: '#/components/responses/Erreur'
+  /api/v1/formation/file:
+    get:
+      operationId: get_formation_file
+      summary: GET /formation/file
+      description: 'API de téléchargement d''un fichier de description de la formation, via son ID'
+      servers:
+        - url: 'http://dev.forge.test/api/formation/file'
+      tags:
+        - Formation
+      parameters:
+        - $ref: '#/components/parameters/id_formation'
+      responses:
+        '200':
+          description: Fichier XML de description de la formation.
+          content:
+            multipart/form-data:
+              schema:
+                type: string
+                format: binary
+              examples:
+                exemple-fichier-xml:
+                  value: |
+                    <formation>
+                        <id>1</id>
+                        <description>test</description>
+                    </formation>
+        '400':
+          $ref: '#/components/responses/Erreur'
+components:
+  schemas:
+    Erreur:
+      type: object
+      title: erreur
+      description: Description d'une erreur standard
+      properties:
+        code_erreur:
+          type: string
+          description: Code technique/fonctionnel associé à une erreur. Un code différent est associé à chaque type d'erreur.
+        message_erreur:
+          type: string
+          description: Description de l'erreur.
+    Formation:
+      type: object
+      title: formation
+      description: Description d'une formation
+      required:
+        - intitule
+      properties:
+        intitule:
+          type: string
+          description: Intitulé de la formation
+        salle:
+          $ref: '#/components/schemas/Salle'
+      example:
+        intitule: Intitule de la Formation
+    Salle:
+      type: object
+      title: salle
+      description: Description d'une salle
+      required:
+        - numero
+      properties:
+        numero:
+          type: string
+          description: Numero de la salle
+        adresse:
+          $ref: '#/components/schemas/Adresse'
+      example:
+        numero: C206
+    Adresse:
+      type: object
+      title: adresse
+      description: Description d'une adresse postale
+      required:
+        - ville
+        - code_postal
+      properties:
+        ville:
+          type: string
+          description: Nom de la ville associé à l'adresse
+        code_postal:
+          type: number
+          description: Code postal associé à l'adresse
+      example:
+        ville: Nantes
+        codePostal: '44100'
+  parameters:
+    id_formation:
+      name: id_formation
+      description: Id de la formation a recuperer. Le champs est obligatoire.
+      in: query
+      required: true
+      schema:
+        type: integer
+  responses:
+    Erreur:
+      description: Erreur standard
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Erreur'
+          examples:
+            exemple-erreur-36:
+              value:
+                codeErreur: '36'
+                messageErreur: Le numéro de la formation n'a pas été fourni dans la requête.
+tags:
+  - name: Formation
+    description: L'API de formation permet d'interagir de consulter/modifier tout ce qui concerne les formations
+    externalDocs:
+      url: 'http://documentation/formation'
